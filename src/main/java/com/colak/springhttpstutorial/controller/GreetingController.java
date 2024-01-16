@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/greeting")
 public class GreetingController {
 
-    // https:/localhost:8443/api/greeting/greet
+    // https:/localhost:8080/api/greeting/greet
     @GetMapping("/greet")
     String greet() {
         return "Hello";

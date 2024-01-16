@@ -1,0 +1,17 @@
+server:
+  port: 8080
+  ssl:
+    bundle: "secure-service"
+#    enabled-protocols: "TLSv1.3"
+
+spring:
+  ssl:
+    bundle:
+      jks:
+        secure-service:
+          key:
+            alias: "mycertificate"
+          keystore:
+            location: "classpath:keystore.p12"
+            password: "mycertificate"
+            type: "PKCS12"
