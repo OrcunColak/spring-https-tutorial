@@ -6,6 +6,16 @@ server:
     bundle: "secure-service"
 #    enabled-protocols: "TLSv1.3"
 
+#spring:
+#  ssl:
+#    bundle:
+#      pem:
+#        mybundle:
+#          reload-on-update: true
+#          keystore:
+#            certificate: "file:/some/directory/application.crt"
+#            private-key: "file:/some/directory/application.key"
+
 spring:
   ssl:
     bundle:
