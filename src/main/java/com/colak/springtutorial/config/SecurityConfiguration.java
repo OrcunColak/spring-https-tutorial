@@ -1,4 +1,4 @@
-package com.colak.springhttpstutorial.config;
+package com.colak.springtutorial.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

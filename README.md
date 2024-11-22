@@ -6,7 +6,10 @@ https://medium.com/@bubu.tripathy/securing-spring-boot-application-with-https-2e
 The original idea is from  
 https://medium.com/viascom/enabling-https-in-spring-boot-3-c94095389842
 
-Generate self-signed certificate with
+keytool typically works with Java KeyStores (JKS) or PKCS12 keystores, but it does not directly manage PEM files.
+keytool does not create PEM keystores directly.
+
+Generate JKS keystore that has a PKCS12 self-signed certificate 
 ```
 keytool \
   -genkey \

@@ -1,4 +1,4 @@
-package com.colak.springhttpstutorial.controller;
+package com.colak.springtutorial.controller;
 
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
@@ -30,31 +30,27 @@ public class SslTestRestTemplate {
                 .loadTrustMaterial(null, acceptingTrustStrategy)
                 .build();
 
-        final SSLConnectionSocketFactory sslsf =
+        final SSLConnectionSocketFactory sslConnectionSocketFactory =
                 new SSLConnectionSocketFactory(sslContext, NoopHostnameVerifier.INSTANCE);
 
         final Registry<ConnectionSocketFactory> socketFactoryRegistry =
-                RegistryBuilder.<ConnectionSocketFactory> create()
-                        .register("https", sslsf)
+                RegistryBuilder.<ConnectionSocketFactory>create()
+                        .register("https", sslConnectionSocketFactory)
                         .register("http", new PlainConnectionSocketFactory())
                         .build();
 
-        final BasicHttpClientConnectionManager connectionManager =
-                new BasicHttpClientConnectionManager(socketFactoryRegistry);
+        final BasicHttpClientConnectionManager connectionManager = new BasicHttpClientConnectionManager(socketFactoryRegistry);
 
 
         CloseableHttpClient httpClient = HttpClients.custom()
                 .setConnectionManager(connectionManager)
                 .build();
 
-        HttpComponentsClientHttpRequestFactory customRequestFactory =
-                new HttpComponentsClientHttpRequestFactory();
+        HttpComponentsClientHttpRequestFactory customRequestFactory = new HttpComponentsClientHttpRequestFactory();
 
         customRequestFactory.setHttpClient(httpClient);
 
-        /*
-         * Create a RestTemplate that uses custom request factory
-         */
+        // Create a RestTemplate that uses custom request factory
         return restTemplateBuilder.requestFactory(() -> customRequestFactory).build();
     }
 }
